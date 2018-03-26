@@ -9,13 +9,33 @@ def insert(lista):
     return lista
 def rimuovi(lista):
     print("Cosa devo rimuovere? ",end='')
+    #es3
+    trova = input()
+    c = 0
+    for task in lista:
+        flag=task.find(trova)
+        #se non trova restituisce -1
+        #se trova restituisce indice
+        #print(task,flag)
+        if (flag>=0):
+            c=c+1
+            lista.remove(task)
+    if (c==0):
+        print("Non trovato")
+    else:
+        print("Rimossi %d task."%(c))
+    return lista
+""" #es2
     task=input()
     if (task in lista):
         print("Rimosso")
         lista.remove(task)
+
     else:
-        print("Non trovato")
+        print("Non trovato")   
     return lista
+"""
+
 
 val=0
 txt = open("task_list.txt","r")
