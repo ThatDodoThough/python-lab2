@@ -11,11 +11,17 @@ def rimuovi(lista):
     print("Cosa devo rimuovere? ",end='')
     task=input()
     if (task in lista):
+        print("Rimosso")
         lista.remove(task)
+    else:
+        print("Non trovato")
     return lista
 
 val=0
-lista = []
+txt = open("task_list.txt","r")
+contenuto=txt.read()
+txt.close()
+lista = contenuto.split("\n")
 while val!=4:
     val=menu()
     if val==1:
@@ -25,4 +31,15 @@ while val!=4:
         print(ordinata)
     elif val==2:
         lista = rimuovi(lista)
+txt = open("task_list.txt","w")
 
+aus=""
+l=1
+N=len(lista)
+for elem in lista:
+    aus = aus + elem
+    if l!=N:
+        aus = aus + "\n"
+    l=l+1
+txt.write(aus)
+txt.close()
